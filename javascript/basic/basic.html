@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        /* 기본 출력 */
+
+        // 콘솔창
+        console.log("hello world!");
+        // html 페이지
+        document.write("hello world!");
+        // 브라우저 확인창
+        // prompt("hello world!");
+
+
+        /* 변수 선언 방법 */
+
+        // 상수 선언, 반드시 선언과 초기화를 동시에 해야 함 (선언 이후 수정이 불가하다.)
+        const a = 1;
+        // 변수 선언, 선언만 하였을 시 undefined로 초기화가 된다. 같은 이름의 변수를 다시 선언할 수 있다. (let에게 밀려 안쓴다)
+        var b = 2;
+        // 변수 선언2, var보다 let을 보편적으로 훨 많이 쓴다. 
+                /**
+                 * 장점 1 : 스코프 단위로 같은 이름의 변수를 다시 선언할 수 없다
+                 * 장점 2 : 선언 시 초기화를 하지 않으면 error가 난다. (var은 undefined로 초기화게 되기 되기 떄문에 error는 아니다) 
+                */
+        let c = 3;
+
+        
+        // primitive type은 Number, Boolean, String, null, undefined가 있다.
+            /* null과 undefined의 차이라면, null은 사람이 직접 비었다는 것을 표현한 것이고, undefined는 의도와 달리 진짜 아무것도 안 넣은 것 */
+        
+        let num = 1;
+        let bool = true;
+        let str = "String";
+        let n = null;
+        let u = undefined;
+
+
+        /* 비교 연산자 주의점 */
+        // == 연산자는 타입까지 체크하지 않는다 (숫자와 문자열 비교 시에만, ==, !=)
+        // === 연산자를 써야 타입까지 체크하는 것이다 (===, !==)
+        let equalV1 = ("1" == 1) ? true : false;
+        let equalV2 = ("1" === 1) ? true : false;
+
+        /* 객체 생성 */
+        // 다른 방법을 생성할 수도 있다.
+        // Json이랑 거의 똑같음.
+        const person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue",
+            info: function(){
+                console.log("hello " + this.lastName);
+            }
+        };
+
+        // 객체 내부에 접근할 때는 이런 식이다.
+        console.log(person["firstName"]);
+        console.log(person.firstName);
+        person.info();
+
+        /* f-string과 같이 출력하는법 */
+        // 백틱(`) 으로 출력하고, jsp, thymeleaf가 생각나는 문법이다.
+        console.log(`이 사람의 이름은 ${person.firstName}`);
+    
+
+        /* 조건, 반복문 */
+        // 조건문은 동일
+        if (true) {} else{}
+        // 반복문도 동일하나, foreach 구문 형태가 조금 다르다.
+        let arr = ["1", "2", "3"];
+        for(let i in arr){
+            console.log(i);
+        }
+        // 객체는 key가 꺼내진다.
+        for(let key in person){
+            console.log(person[key]);
+        }
+
+
+        
+    </script>
+
+    <!-- js 파일 분리 -->
+    <script src=""></script>
+
+
+</head>
+<body>
+</body>
+</html>

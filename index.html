@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery/js/jquery-1.10.2.min.js"></script>
+    <script>
+        let box = {
+            "background-color": "white",
+            "position":"absolute",
+            "height": "28px",
+            "width": "28px",
+            "padding": 0,
+            "margin": 0,
+            "border": "1px solid white"
+        }
+
+        let arr = Array(30, Array(30));
+
+
+
+        $(function(){
+            let screenHeight = 20;
+            let screenWidth = 30;
+            let screen = $("screen");
+            let score = 0;
+            let count = 0;
+            let change = [];
+
+            for(let i = 0; i < screenHeight; i++){
+                for(let j = 0; j < screenWidth; j++){
+                    $("<div value='none'></div>").css(box).css("left", j * 30).css("top", i * 30).appendTo("body");
+                }
+            }
+            $("p").css("position", "fixed").css("z-index","2").css("font-size", "15px").css("color", "red").css("font-weight", "strong");
+            $("p").eq(0).css("left", 100);
+
+            $("div").on("click", function(){
+                if ($(this).css("background-color") == 'rgb(255, 255, 255)'){
+                    score -= 100;
+                    writeScoreCount();
+
+                }
+                else if ($(this).css("background-color") == 'rgb(0, 0, 0)'){
+                    console.log("right!");
+                    $(this).css("background-color", "white");
+                    count--;
+                    score += 100;
+                    writeScoreCount();
+                }
+            })
+
+            $("div").hover(function(){$(this).css("border", "1px solid green");}, function(){$(this).css("border", "1px solid white");});
+
+            let con = setInterval(function(){
+                let i = Math.floor(Math.random() * (screenHeight * screenWidth));
+                $("div").eq(i).css("background-color", "black");
+                count++;
+                writeScoreCount();
+            }, 500)
+
+            setInterval(function(){
+                if (count >= 30){
+                    clearInterval(con);
+                    let i = Math.floor(Math.random() * 900);
+                    $("div").eq(i).css("background-color", "red");
+                    $("p").css("font-size", "30px").css("color", "black");
+                    writeScoreCount();
+                }
+            }, 0.1)
+
+
+            function writeScoreCount(){
+                $("p:first").text(count);
+                $("p:last").text(score);
+            }
+        });
+        
+    </script>
+</head>
+<body>
+    <p id="score">0</p>
+    <p id="count">0</p>
+    <screen>
+
+    </screen>
+</body>
+</html>

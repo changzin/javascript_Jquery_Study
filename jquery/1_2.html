@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.10.2.min.js""></script>
+    <script>
+        $(function(){
+            $("div").each(
+                function(i, o){
+                    $(o).css("font-size", 20 * (i+1));
+                }
+            )
+        });
+    </script>
+</head>
+<body>
+    <div>div 2</div>
+    <div> div 1
+        <ul> ul 1
+            <li>li 1</li>
+            <li>li 2</li>
+            <li>li 3</li>
+        </ul>
+    </div>
+
+</body>
+</html>
